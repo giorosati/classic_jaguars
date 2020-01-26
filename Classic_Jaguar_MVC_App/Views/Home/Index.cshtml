@@ -1,0 +1,43 @@
+﻿@model List<Classic_Jaguar_MVC_App.Models.car>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<br />
+
+<div>
+    <table class="table table-bordered col-lg-8">
+        <thead>
+            <tr>
+                <th>Model</th>
+                <th>1st yr</th>
+                <th> - </th>
+                <th>Last yr</th>
+                <th># Units</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var j in Model)
+            {
+                if (j.DateDeleted == null)
+                {
+                    <tr>
+                        <td width="80px" style="vertical-align: middle; text-align: center">@j.ModelName</td>
+                        <td width="50px" style="vertical-align: middle; text-align: center">@j.FirstYear</td>
+                        <td width="5px" style="vertical-align: middle; text-align: center"> - </td>
+                        <td width="50px" style="vertical-align: middle; text-align: center">@j.LastYear</td>
+                        <td width="50px" style="vertical-align: middle; text-align: center">@j.UnitsProduced</td>
+                        <td width="60%" style="vertical-align: middle; text-align: center"><img class="img-responsive" src="@j.ImgUrl" /></td>
+                        <td width="30px" style="vertical-align: middle; text-align: center">
+                            <a href="/Home/EditModel/@j.ModelId" class="btn btn-warning">Edit</a>
+                            <a href="/Home/DeleteModel/@j.ModelId" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    <tr></tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
